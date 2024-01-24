@@ -68,7 +68,8 @@ namespace AdoNetConsoleApplication
                             program.DropTable();
                             break;
                         default:
-                            Console.WriteLine("Invalid Choice,Please Enter a correct choice:");
+                            Console.WriteLine("Invalid Choice,Please Enter a " +
+                                "correct choice:");
                             break;
                     }
 
@@ -89,7 +90,9 @@ namespace AdoNetConsoleApplication
             try
             {
                 // Read connection string from app.config
-                string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+                string connectionString = ConfigurationManager
+                    .ConnectionStrings["MyConnectionString"].ConnectionString;
+
                 connection = new SqlConnection(connectionString);
 
                 connection.Open();
@@ -99,8 +102,8 @@ namespace AdoNetConsoleApplication
             }
             catch (Exception e)
             {
-                Console.WriteLine("OOPs, something went wrong in TestConnection: " + e);
-                logger.addData(e);
+                Console.WriteLine("OOPs, something went wrong in Testing Connection: " + e);
+                Logger.AddData(e);
                 return false;
             }
             finally
@@ -132,7 +135,7 @@ namespace AdoNetConsoleApplication
             catch (Exception e)
             {
                 Console.WriteLine("Something went wrong in Table Creation." + e);
-                logger.addData(e);
+                Logger.AddData(e);
             }
 
             finally
@@ -170,15 +173,10 @@ namespace AdoNetConsoleApplication
                     }
                     Console.WriteLine("Displayed Data Successfully");
                 }
-            }
-            catch (Exception e)
-            {
+            }catch (Exception e){
                 Console.WriteLine("Something went wrong in displaying data." + e);
-                logger.addData(e);
-            }
-
-            finally
-            {
+                Logger.AddData(e);
+            }finally{
                 connection.Close();
             }
         }
@@ -216,10 +214,8 @@ namespace AdoNetConsoleApplication
             catch (Exception e)
             {
                 Console.WriteLine("Something went wrong." + e);
-                logger.addData(e);
-            }
-
-            finally
+                Logger.AddData(e);
+            }finally
             {
                 connection.Close();
             }
@@ -254,7 +250,7 @@ namespace AdoNetConsoleApplication
             catch (Exception e)
             {
                 Console.WriteLine("Something went wrong in updating data." + e);
-                logger.addData(e);
+                Logger.AddData(e);
             }
 
             finally
@@ -290,7 +286,7 @@ namespace AdoNetConsoleApplication
             catch (Exception e)
             {
                 Console.WriteLine("Something went wrong in deleting data." + e);
-                logger.addData(e);
+                Logger.AddData(e);
             }
 
             finally
@@ -333,7 +329,7 @@ namespace AdoNetConsoleApplication
             catch (Exception e)
             {
                 Console.WriteLine("Something went wrong in deleting all data." + e);
-                logger.addData(e);
+                Logger.AddData(e);
             }
 
             finally
@@ -376,7 +372,7 @@ namespace AdoNetConsoleApplication
             catch (Exception e)
             {
                 Console.WriteLine("Something went wrong in dropping of table." + e);
-                logger.addData(e);
+                Logger.AddData(e);
             }
 
             finally
@@ -384,6 +380,5 @@ namespace AdoNetConsoleApplication
                 connection.Close();
             }
         }
-
     }
 }

@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CRUDLOG
 {
-    internal class logger
+    internal class Logger
     {
-        public static void addData(Exception inputData)
+        public static void AddData(Exception inputData)
         {
-            string fileName = @"C:\Users\tanishkaf\Desktop\dotnetprac\A2\logFile.txt";
+            //string fileName = @"C:\Users\tanishkaf\Desktop\dotnetprac\A2\logFile.txt";
+            string logFilePath = ConfigurationManager.AppSettings["LogFilePath"];
+
 
             string logMessage = $"Time: {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt")}{Environment.NewLine}" +
                                 "-----------------------------------------------------------" +
@@ -24,7 +22,7 @@ namespace CRUDLOG
                                 "-----------------------------------------------------------" +
                                 $"{Environment.NewLine}";
 
-            using (StreamWriter writer = new StreamWriter(fileName, true))
+            using (StreamWriter writer = new StreamWriter(logFilePath, true))
             {
                 writer.WriteLine(logMessage);
             }

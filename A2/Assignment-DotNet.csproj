@@ -44,13 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="logger.cs" />
-    <Compile Include="Assignmnet_File_Reader_Writer.cs" />
     <Compile Include="CRUDSQL.cs" />
+    <Compile Include="logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\A2.exe.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\A2.exe" />
+    <Content Include="bin\Debug\A2.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
