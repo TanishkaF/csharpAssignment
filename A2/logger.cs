@@ -12,6 +12,21 @@ namespace CRUDLOG
             string logFilePath = ConfigurationManager.AppSettings["LogFilePath"];
 
 
+            string logFolderPath = ConfigurationManager.AppSettings["LogFolderPath"];
+
+            // Create a folder based on the current date
+            string folderPath = Path.Combine(logFolderPath, DateTime.Now.ToString("yyyy-MM-dd"));
+
+            // Ensure the folder exists, create it if necessary
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+
+            }
+            string logFileName = $"logFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
+            string fullLogFilePath = Path.Combine(folderPath, logFileName);
+
+
             string logMessage = $"Time: {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt")}{Environment.NewLine}" +
                                 "-----------------------------------------------------------" +
                                 $"{Environment.NewLine}Exception Details:{Environment.NewLine}" +
@@ -22,7 +37,7 @@ namespace CRUDLOG
                                 "-----------------------------------------------------------" +
                                 $"{Environment.NewLine}";
 
-            using (StreamWriter writer = new StreamWriter(logFilePath, true))
+            using (StreamWriter writer = new StreamWriter(fullLogFilePath, true))
             {
                 writer.WriteLine(logMessage);
             }
@@ -30,3 +45,4 @@ namespace CRUDLOG
     }
 
 }
+
